@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import UploadForm from "./components/Uploadform";
+import ResultCard from "./components/Result";
 
 export default function Home() {
    const [result, setResult] = useState(null);
@@ -38,7 +39,7 @@ export default function Home() {
         </p>
       </header>
 
-      {/* Upload Form */}
+<div className="flex justify-around items-center w-full">      {/* Upload Form */}
       <div className="w-full max-w-lg z-10">
         <div className="backdrop-blur-lg bg-white/10 p-6 rounded-2xl shadow-lg border border-white/20 transition-transform hover:scale-105">
           <UploadForm onUpload={handleUpload} />
@@ -53,6 +54,8 @@ export default function Home() {
           </div>
         </div>
       )}
+      </div>
+
     </div>
   );
 }
