@@ -7,9 +7,9 @@ export default function ResultCard({ data }) {
   useEffect(() => {
     if (!data?.final_score) return;
     setPieData([
-      { value: data.final_score, name: "Similarity",   fill: "red"},
+      { value: data.final_score, name: "Similarity",   fill: "#ff3300"},
 
-      { value: 100 - data.final_score, name: "Unique" , fill:"grey"},
+      { value: 100 - data.final_score, name: "Unique" , fill:" #999966"},
     ]);
   }, [data]);
 
