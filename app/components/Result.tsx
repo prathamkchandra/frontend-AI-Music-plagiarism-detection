@@ -9,13 +9,13 @@ export default function ResultCard({ data }) {
     setPieData([
       { value: data.final_score, name: "Similarity",   fill: "red"},
 
-      { value: 100 - data.final_score, name: "Unique" , fill:"green"},
+      { value: 100 - data.final_score, name: "Unique" , fill:"grey"},
     ]);
   }, [data]);
 
 
   return (
-    <div className="bg-gray-900/80 backdrop-blur-md mt-6 p-6 rounded-2xl shadow-xl max-w-3xl w-full mx-auto">
+    <div className="bg-gray-900/80 backdrop-blur-md mt-6 p-6 rounded-2xl shadow-xl max-w-3xl w-full mx-auto text-wrap break-all">
       <h2 className="text-2xl font-bold text-orange-400 mb-4">Results</h2>
 {data.final_score !== null && (
         <div className="mt-6 flex flex-col items-center">
@@ -31,14 +31,14 @@ export default function ResultCard({ data }) {
         </div>
       )}
 
-      <p className="mb-2">🎧 Uploaded Song: <b>{data.uploaded_song}</b></p>
+      <p className="mb-2"> Uploaded Song: <b>{data.uploaded_song}</b></p>
       {data.uploaded_song_path && (
         <audio controls src={data.uploaded_song_path} className="w-full mb-4 rounded-lg" />
       )}
 
       {data.match_song && (
-        <p className="mb-2">
-          ✅ Matched Song: <b>{data.match_song}</b> <span className="text-gray-400">({data.match_label})</span>
+        <p className="mb-2 text-wrap overflow-hidden word-wrap break-all">
+           Matched Song: <b>{data.match_song}</b> <span className="text-gray-400">({data.match_label})</span>
         </p>
       )}
       {data.match_song_path && (
