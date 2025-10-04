@@ -44,7 +44,7 @@ export function ChartPieLabelList({chartData}:{chartData: Record<string, string 
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="[&_.recharts-text]:fill-background shawdow-3xl mx-auto aspect-square max-h-[250px]"
+          className="[&_.recharts-text]:fill-background shawdow-3xl mx-auto aspect-square max-h-[250px] w-140"
         >
           <PieChart>
             <ChartTooltip
@@ -66,7 +66,7 @@ export function ChartPieLabelList({chartData}:{chartData: Record<string, string 
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 leading-none font-medium">
-          Showing total Similarity with our dataset.
+           Total Similarity with our dataset.
         </div>
       </CardFooter>
     </Card>

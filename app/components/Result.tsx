@@ -15,12 +15,13 @@ export default function ResultCard({ data }) {
 
 
   return (
+
     <div className="bg-gray-900/80 backdrop-blur-md mt-6 p-6 rounded-2xl shadow-xl max-w-3xl w-full mx-auto text-wrap break-all">
       <h2 className="text-2xl font-bold text-orange-400 mb-4">Results</h2>
 {data.final_score !== null && (
         <div className="mt-6 flex flex-col items-center">
           <div
-            className={`px-4 py-2 rounded-full font-bold text-white mb-4 ${
+            className={`px-4 py-2 mr-0.5 rounded-full font-bold text-white mb-4 ${
               data.final_score >= 85 ? "bg-red-500" : data.final_score <= 75 ? "bg-green-500" : "bg-yellow-500"
             }`}
           >
@@ -31,7 +32,7 @@ export default function ResultCard({ data }) {
         </div>
       )}
 
-      <p className="mb-2"> Uploaded Song: <b>{data.uploaded_song}</b></p>
+      <p className="mb-2 p-3"> Uploaded Song: <b>{data.uploaded_song}</b></p>
       {data.uploaded_song_path && (
         <audio controls src={data.uploaded_song_path} className="w-full mb-4 rounded-lg" />
       )}
