@@ -2,10 +2,13 @@
 import UploadForm from "./components/Uploadform";
 import ResultCard from "./components/Result";
 import { useMutation } from "@tanstack/react-query";
+import { useQueryClient } from '@tanstack/react-query'
+
+
 
 export default function Home() {
   //  const [result, setResult] = useState(null);
-
+  const queryClient = useQueryClient()
   const handleUpload = async (file: string | Blob) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -36,7 +39,7 @@ export default function Home() {
     onSuccess:(e)=>{
       console.log(e)
     }
-  },
+  }, queryClient,
 )
   return (
    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden">
