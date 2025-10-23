@@ -1,17 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function UploadForm({ onUpload }) {
-  const [loading, setLoading] = useState(false);
+export default function UploadForm({ onUpload, isPending}:{onUpload: (file:string | Blob)=>void , isPending:boolean}) {
+  // const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const file = e.target.file.files[0];
-    if (!file) return;
+  // const handleSubmit = async (e: React.ChangeEvent) => {
+  //   e.preventDefault();
+  //   const file = e.target.file.files[0];
+  //   if (!file) return;
 
-    setLoading(true);
-    await onUpload(file);
-    setLoading(false);
+  //   // setLoading(true);
+  //   await onUpload(file);
+  //   // setLoading(false);
+  // };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  // Assert the target to include your named 'file' input
+  const target = e.target as typeof e.target & {
+    file: HTMLInputElement;
   };
+
+  const file =target?.file?.files && target?.file?.files[0];
+  if (!file) return;
+
+  // setLoading(true);
+  await onUpload(file);
+  // setLoading(false);
+};
 
   return (
     <form 
@@ -27,10 +43,10 @@ export default function UploadForm({ onUpload }) {
       />
       <button 
         type="submit" 
-        disabled={loading}
+        disabled={isPending}
         className="w-full bg-gradient-to-r from-orange-500 to-red-500 py-3 px-4 rounded-lg font-bold text-white tracking-wide shadow-lg hover:shadow-xl transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {loading ? "Analyzing..." : "Check Similarity"}
+        {isPending ? "Analyzing..." : "Check Similarity"}
       </button>
     </form>
   );

@@ -1,12 +1,12 @@
 'use client'
-import { useState } from "react";
 import UploadForm from "./components/Uploadform";
 import ResultCard from "./components/Result";
+import { useMutation } from "@tanstack/react-query";
 
 export default function Home() {
-   const [result, setResult] = useState(null);
+  //  const [result, setResult] = useState(null);
 
-  const handleUpload = async (file) => {
+  const handleUpload = async (file: string | Blob) => {
     const formData = new FormData();
     formData.append("file", file);
 
@@ -15,12 +15,29 @@ export default function Home() {
         method: "POST",
         body: formData,
       });
-      const data = await res.json();
-      setResult(data);
+      return await res.json();
+      // setResult(data);
     } catch (error) {
       console.error("Upload failed:", error);
     }
   };
+
+  const {
+  data:result,
+  isPending,
+  mutate
+} = useMutation(
+  {
+    mutationFn:handleUpload,
+    mutationKey:['uploadKey'],
+    onError:(e)=>{
+      console.error(e)
+    },
+    onSuccess:(e)=>{
+      console.log(e)
+    }
+  },
+)
   return (
    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden">
       
@@ -42,15 +59,15 @@ export default function Home() {
         </p>
       </header>
         <div className="backdrop-blur-lg max-w-lg bg-white/10 p-6 rounded-2xl shadow-lg border border-white/20 transition-transform hover:scale-105">
-          <UploadForm onUpload={handleUpload} />
+          <UploadForm onUpload={mutate} isPending={isPending} />
         </div>
       </div>
 
       {/* Result Section */}
       {result && (
         <div className="w-full max-w-3xl mt-10 z-10 animate-fadeIn">
-          <div className="backdrop-blur-lg bg-white/10 p-8 rounded-2xl shadow-xl border border-white/20">
-            <ResultCard data={result} />
+          <div className="backdrop-blur-lg bg-white/10 p-3 m-3 rounded-2xl shadow-xl border border-white/20">
+            <ResultCard data={result}/>
           </div>
         </div>
       )}
