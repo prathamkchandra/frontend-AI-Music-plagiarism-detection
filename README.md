@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/badge/status-upload–demo-green)]()  
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
-[![Frontend: Vercel](https://img.shields.io/badge/deployed-on-Vercel-black.svg)](https://frontend-ai-music-plagiarism-detect.vercel.app/)  
+
 
 > A web-based tool to check music similarity and detect potential plagiarism using deep-learning. Upload a track, compare against a database, and get a similarity score — all from your browser.
 
