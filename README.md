@@ -4,6 +4,12 @@
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)  
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
+<<<<<<< HEAD
+=======
+[![Build Status](https://img.shields.io/badge/status-upload–demo-green)]()  
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
+
+>>>>>>> 30bc2aaf8e4a97d6dfb18cac1c71b20216089c41
 
 > A web-based tool to check music similarity and detect potential plagiarism using deep-learning. Upload a track, compare against a database, and get a similarity score — all from your browser.
 
