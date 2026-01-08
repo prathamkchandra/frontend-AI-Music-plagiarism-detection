@@ -53,7 +53,7 @@ export default function Home() {
       <div className="w-full flex flex-col items-center  z-10 grow">
          <header className="text-center mb-12 z-10 w-full">
         <h1 className="text-5xl font-extrabold bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent drop-shadow-lg animate-bounce">
-           Music Plagiarism Checker
+           Music Plagiarism Detector 
         </h1>
         <p className="mt-4 text-gray-300 text-lg font-light tracking-wide">
           Upload your track/song and discover how similar it is to our dataset.
